@@ -69,6 +69,21 @@
     for (UIView *subview in self.subviews) {
         [subview removeFromSuperview];
     }
+	
+	if ([(id)CollapseClickDelegate respondsToSelector:@selector(headerView)])
+	{
+		UIView* headerView = [CollapseClickDelegate headerView];
+		if (headerView)
+		{
+			CGRect f = headerView.frame;
+			f.origin.x = 0;
+			f.origin.y = 0;
+			headerView.frame = f;
+			[self addSubview:headerView];
+			
+			totalHeight += f.size.height;
+		}
+	}
     
     // Add cells
     for (int xx = 0; xx < [CollapseClickDelegate numberOfCellsForCollapseClick]; xx++) {
@@ -95,12 +110,13 @@
         
         
         // Set cell.TitleArrow's Color
-        if ([(id)CollapseClickDelegate respondsToSelector:@selector(colorForTitleArrowAtIndex:)]) {
-            [cell.TitleArrow drawWithColor:[CollapseClickDelegate colorForTitleArrowAtIndex:xx]];
-        }
-        else {
-            [cell.TitleArrow drawWithColor:[UIColor colorWithWhite:0.0 alpha:0.35]];
-        }
+		cell.TitleArrow.image = [UIImage imageWithSize:CGSizeMake(22, 22)
+									   backgroundColor:nil
+												  text:[NSString fontAwesomeIconStringForEnum:FAIconAngleRight]
+												  font:[UIFont fontAwesomeFontOfSize:22]
+											 fillColor:[UIColor flatGrayColor]
+										   strokeColor:nil
+										   shadowColor:nil];
         
         // Set cell.ContentView's size
         cell.ContentView.frame = CGRectMake(0, kCCHeaderHeight + kCCPad, self.frame.size.width, cell.ContentView.frame.size.height);

@@ -21,6 +21,7 @@
 -(UIView *)viewForCollapseClickContentViewAtIndex:(int)index;
 
 @optional
+-(UIView *) headerView;
 -(UIColor *)colorForCollapseClickTitleViewAtIndex:(int)index;
 -(UIColor *)colorForTitleLabelAtIndex:(int)index;
 -(UIColor *)colorForTitleArrowAtIndex:(int)index;

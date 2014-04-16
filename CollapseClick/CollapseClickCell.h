@@ -17,7 +17,7 @@
 @property (weak, nonatomic) IBOutlet UIView *TitleView;
 @property (weak, nonatomic) IBOutlet UILabel *TitleLabel;
 @property (weak, nonatomic) IBOutlet UIButton *TitleButton;
-@property (weak, nonatomic) IBOutlet CollapseClickArrow *TitleArrow;
+@property (weak, nonatomic) IBOutlet UIImageView *TitleArrow;
 
 // Body
 @property (weak, nonatomic) IBOutlet UIView *ContentView;
